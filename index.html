@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css"/>
+
+    <title>rock paper scissors</title>
+</head>
+<body>
+   <div id="app">
+        <h1 class="game-title">🎮 Rock Paper Scissors</h1>
+
+        <div class="summary">
+            <div class="score">
+                <p>Player: <span id="playerScore">0</span></p>
+                <p>paper king: <span id="botScore">0</span></p>
+            </div>
+            <h1 class="title">MATCH RESULT</h1>
+            <br/>
+            <h1 id="inGame"></h1>
+            <h3 id="result"></h3>
+        </div>
+        <div class="games">
+            <div class="option" onclick="pickOption('✌')">✌</div>
+            <div class="option" onclick="pickOption('✊')">✊</div>
+            <div class="option" onclick="pickOption('🖐')">🖐</div>
+        </div>
+        <div class="body">
+             <button onclick="resetGame()">Reset Game</button>
+
+        </div>
+   </div> 
+
+    <script>
+        let playerScore = 0;
+        let botScore = 0;
+        let isPlaying = false; 
+
+        class Start {
+            constructor() {
+                this.playerName = "Player"
+                this.botName = "paper king"
+                this.playerOption;
+                this.botOption;
+                this.winner = ""
+            }
+
+            get getBotOption() {
+                return this.botOption;
+            }
+
+            set setBotOption (option) {
+                this.botOption = option;
+            }
+
+            get getPlayerOption() {
+                return this.playerOption;
+            }
+
+            set setPlayerOption (option) {
+                this.playerOption = option;
+            }
+
+            botBrain() {
+                const options = ["✌", "✊", "🖐"];
+                const bot = options[Math.floor(Math.random() * options.length)];
+                return bot;
+            }
+
+            winCalculation() {
+                if (this.botOption === "🖐" && this.playerOption === "✌") {
+                    return this.winner = this.playerName;
+                } else if (this.botOption === "🖐" && this.playerOption === "✊") {
+                    return this.winner = this.botName;
+                } else if (this.botOption === "✌" && this.playerOption === "🖐") {
+                    return this.winner = this.botName;
+                } else if (this.botOption === "✌" && this.playerOption === "✊") {
+                    return this.winner = this.playerName;
+                } else if (this.botOption === "✊" && this.playerOption === "🖐") {
+                    return this.winner = this.playerName;
+                } else if (this.botOption === "✊" && this.playerOption === "✌") {
+                    return this.winner = this.botName;
+                } else {
+                    return this.winner = "SERI"
+            }
+        }
+
+        matchResult() {
+            if(this.winner !== "SERI") {
+                return `YEYYY ${this.winner} MENANG!`;
+            } else {
+                return `WAAA ${this.winner}, GAK ADA YANG MENANG 🤪`;
+        }
+    }
+}
+
+        
+        function pickOption(params) {
+
+            if(isPlaying) return;
+            isPlaying = true;
+
+            const start = new Start();
+            start.setPlayerOption = params;
+            start.setBotOption = start.botBrain();
+            start.winCalculation();
+            console.log(`player: ${start.getPlayerOption} VS Bot: ${start.getBotOption}`);
+            console.log("Hasil akhir: ", start.matchResult());
+
+            const inGame = document.getElementById("inGame");
+            const result = document.getElementById("result");
+
+            inGame.textContent = "paper king sedang berpikir 🤖...";
+            result.textContent = "Tunggu sebentar...";
+
+        setTimeout(() => {
+
+            inGame.innerHTML = `${start.playerName} VS ${start.botName} <br> ${start.getPlayerOption} VS ${start.getBotOption}`;
+            result.textContent = start.matchResult();
+
+            if(start.winner === start.playerName){
+            playerScore++;
+            } else if(start.winner === start.botName){
+        botScore++;
+}
+            document.getElementById("playerScore").textContent = playerScore;
+            document.getElementById("botScore").textContent = botScore;
+
+             isPlaying = false; 
+
+        }, 2000);       
+        }
+
+        function resetGame(){
+            playerScore = 0;
+            botScore = 0;
+
+            document.getElementById("playerScore").textContent = 0;
+            document.getElementById("botScore").textContent = 0;
+
+            document.getElementById("inGame").textContent = "";
+            document.getElementById("result").textContent = "";
+        }
+            </script>
+</body>
+
+</html>

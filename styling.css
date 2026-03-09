@@ -1,0 +1,122 @@
+body {
+    background-color: pink;
+    font-family: 'Franklin Gothic Medium';
+}
+
+:root {
+    box-sizing: border-box;
+}
+
+html,
+body,
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    height: 100vh;
+}
+
+
+.summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    border: 3px solid blanchedalmond;
+    border-radius: 15px;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgb(142, 46, 115)
+}
+
+.games {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option {
+    width: 30%;
+    margin: 10px 15px;
+    padding: 25px;
+    text-align: center;
+    font-size: 40px;
+    background-color: bisque;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgb(142, 46, 115);
+}
+
+.option:hover {
+    cursor: pointer;
+    background-color: burlywood;
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    transform:  scale(110%);
+}
+
+.title {
+    text-align: center;
+}
+
+.body{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+button{
+    padding:10px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    background-color:bisque;
+    transition: 0.2s;
+}
+
+button:hover{
+    cursor:pointer;
+    background-color:burlywood;
+}
+
+.score{
+    display:flex;
+    gap:30px;
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:12px;
+    background: linear-gradient(135deg, bisque, burlywood);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    transition: 0.2s ease-in-out;
+}
+
+button:hover{
+    cursor:pointer;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+button:active{
+    transform: scale(0.95);
+}
+
+.game-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    margin-bottom:20px;
+    font-size:18px;
+}
